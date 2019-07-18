@@ -47,11 +47,43 @@ package object JQueryModule {
   object InitParam extends JQModule {
     var JQuery: JQModule = null
   }
-  
+
+  /**
+    * Enable usage of JQuery version 3.4.1 in your bootstrap liftweb Boot.
+    * @version 3.4.1
+    * OBS! JQuery 3.x does not support Internet Explorer 6, 7, or 8.
+    *
+    * '''Example:'''
+    *
+    * {{{
+    *   JQueryModule.InitParam.JQuery=JQueryModule.JQuery341
+    * }}}
+    * @since v2.12
+    */
+  case object JQuery341 extends JQModule {
+    ModuleResources.jquery341
+  }
+
+  /**
+    * Enable usage of JQuery version 3.3.1 in your bootstrap liftweb Boot.
+    * @version 3.3.1
+    * OBS! JQuery 3.x does not support Internet Explorer 6, 7, or 8.
+    *
+    * '''Example:'''
+    *
+    * {{{
+    *   JQueryModule.InitParam.JQuery=JQueryModule.JQuery331
+    * }}}
+    * @since v2.12
+    */
+  case object JQuery331 extends JQModule {
+    ModuleResources.jquery331
+  }
+
   /**
    * Enable usage of JQuery version 3.1.0 in your bootstrap liftweb Boot.
    * @version 3.1.0
-   * OBS! JQuery 3.x dose not support Internet Explorer 6, 7, or 8.
+   * OBS! JQuery 3.x does not support Internet Explorer 6, 7, or 8.
    *
    * '''Example:'''
    *
@@ -67,7 +99,7 @@ package object JQueryModule {
   /**
    * Enable usage of JQuery version 3.0.0 in your bootstrap liftweb Boot.
    * @version 3.0.0
-   * OBS! JQuery 3.x dose not support Internet Explorer 6, 7, or 8.
+   * OBS! JQuery 3.x does not support Internet Explorer 6, 7, or 8.
    *
    * '''Example:'''
    *
@@ -113,7 +145,7 @@ package object JQueryModule {
   /**
    * Enable usage of JQuery version 2.2.4 in your bootstrap liftweb Boot.
    * @version 2.2.4
-   * OBS! JQuery 2.x dose not support Internet Explorer 6, 7, or 8.
+   * OBS! JQuery 2.x does not support Internet Explorer 6, 7, or 8.
    *
    * '''Example:'''
    *
@@ -144,7 +176,7 @@ package object JQueryModule {
   /**
    * Enable usage of JQuery version 2.1.z in your bootstrap liftweb Boot.
    * @version 2.1.z
-   * OBS! JQuery 2.x dose not support Internet Explorer 6, 7, or 8.
+   * OBS! JQuery 2.x does not support Internet Explorer 6, 7, or 8.
    *
    * '''Example:'''
    *
@@ -160,7 +192,7 @@ package object JQueryModule {
   /**
    * Enable usage of JQuery version 2.1.4 in your bootstrap liftweb Boot.
    * @version 2.1.4
-   * OBS! JQuery 2.x dose not support Internet Explorer 6, 7, or 8.
+   * OBS! JQuery 2.x does not support Internet Explorer 6, 7, or 8.
    *
    * '''Example:'''
    *
@@ -176,7 +208,7 @@ package object JQueryModule {
    /**
    * Enable usage of JQuery version 2.1.1 in your bootstrap liftweb Boot.
    * @version 2.1.1
-   * OBS! JQuery 2.x dose not support Internet Explorer 6, 7, or 8.
+   * OBS! JQuery 2.x does not support Internet Explorer 6, 7, or 8.
    *
    * '''Example:'''
    *
@@ -207,7 +239,7 @@ package object JQueryModule {
   /**
    * Enable usage of JQuery version 1.11.3 in your bootstrap liftweb Boot.
    * @version 1.11.3
-   * OBS! JQuery 2.x dose not support Internet Explorer 6, 7, or 8.
+   * OBS! JQuery 2.x does not support Internet Explorer 6, 7, or 8.
    *
    * '''Example:'''
    *
@@ -313,6 +345,20 @@ package object JQueryModule {
    * Object holding internally used module resources.
    */
   private object ModuleResources {
+
+    lazy val jquery341 = {
+      ResourceServer.rewrite {
+        case "jquery.js" :: Nil if Props.devMode => List("jquery", "3.4.1", "js", "jquery.js")
+        case "jquery.js" :: Nil => List("jquery", "3.4.1", "js", "jquery-min.js")
+      }
+    }
+
+    lazy val jquery331 = {
+      ResourceServer.rewrite {
+        case "jquery.js" :: Nil if Props.devMode => List("jquery", "3.3.1", "js", "jquery.js")
+        case "jquery.js" :: Nil => List("jquery", "3.3.1", "js", "jquery-min.js")
+      }
+    }
 
     lazy val jquery310 = {
       ResourceServer.rewrite {
