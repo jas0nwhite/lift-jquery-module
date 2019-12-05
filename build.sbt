@@ -125,7 +125,7 @@ pomExtra := {
     <licenses>
       <license>
         <name>The Apache Software License, Version 2.0</name>
-        <url>http://maven.apache.org/ref/2.1.0/maven-profile/license.html</url>
+        <url>https://maven.apache.org/ref/2.1.0/maven-profile/license.html</url>
         <distribution>repo</distribution>
       </license>
     </licenses>
@@ -137,7 +137,7 @@ pomExtra := {
       <developer>
         <id>karma4u101</id>
         <name>Peter Petersson</name>
-        <url>http://www.media4u101.se</url>
+        <url>https://www.media4u101.se</url>
       </developer>
     </developers>
 }
